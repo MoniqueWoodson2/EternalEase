@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <style>
+        /* Some basic styling */
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: forestgreen;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: beige;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .mini-bar {
+            margin-top: 5px;
+            display: flow;
+            justify-content: normal;
+        }
+
+            .mini-bar img {
+                width:40px;
+                height: 40px;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image/EE2.png" alt="Logo" style="width:150px;height:150px;" />
+        <h1>EternalEase</h1>
+        <h2>Community Nexus</h2>
+    </header>
+
+    <div class="container">
+        <h2>Create a Post</h2>
+        <form action="#" method="post">
+            <label for="username">Posting as:</label>
+            <input type="text" id="username" name="username" placeholder="Anonymous" value="Anonymous" required><br>
+            <label for="post">Post:</label>
+            <textarea id="post" name="post" rows="4" placeholder="Share what's on your mind..." required></textarea><br>
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject">
+                <option value="confession">Confession</option>
+                <option value="question">Question</option>
+                <option value="events">Events</option>
+                <option value="motivational">Motivational</option>
+            </select><br>
+            <div class="mini-bar">
+                <span>Upload Image:</span>
+                <img src="image2/Image.png" alt="Upload Image" id="img-preview">
+                <input type="file" accept="image/*" id="image" name="image" onchange="previewImage(this);">
+            </div>
+            <button type="button" onclick="cancelPost()">Cancel</button>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to preview image
+        function previewImage(input) {
+            var preview = document.getElementById('img-preview');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        // Function to cancel post (redirect or clear form)
+        function cancelPost() {
+            // Redirect to home page or clear form fields
+            // For now, just refreshing the page
+            window.location.reload();
+        }
+
+        // Function to save post data (for demonstration purposes)
+        function savePost(event) {
+            event.preventDefault(); // Prevent form submission
+            var username = document.getElementById('username').value;
+            var post = document.getElementById('post').value;
+            var subject = document.getElementById('subject').value;
+            // Here, you would typically send this data to a server to save it
+            // For demonstration purposes, we're just logging it to the console
+            console.log("Username: " + username);
+            console.log("Post: " + post);
+            console.log("Subject: " + subject);
+            // After saving the data, redirect to the timeline page
+            window.location.href = "TimelinePage.html";
+        }
+    </script>
+</body>
+</html>

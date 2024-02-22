@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+    <style>
+        /* Some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .mini-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            display: flow;
+            justify-content: normal;
+        }
+
+            .mini-bar img {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+
+        .post {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+            .post .username {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .post .caption {
+                margin-bottom: 10px;
+            }
+
+            .post .subject {
+                font-style: italic;
+                margin-bottom: 10px;
+            }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .post-actions img {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+        .comments {
+            margin-top: 10px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+        .comment-actions img {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mini-bar">
+            <img src="image2/Search.png" alt="Search">
+            <span>Search a subject:</span>
+            <select id="subjectFilter">
+                <option value="">All</option>
+                <option value="confession">Confession</option>
+                <option value="question">Question</option>
+                <option value="events">Events</option>
+                <option value="motivational">Motivational</option>
+            </select>
+            
+        </div>
+
+        <!-- Example post -->
+        <div class="post">
+            <div class="username">User123</div>
+            <div class="caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam dui nec velit varius, non accumsan justo tincidunt.</div>
+            <div class="subject">Subject: Motivational</div>
+            <div class="post-actions">
+                <img src="image2/Like.png" alt="Like">
+                <img src="image2/Save.png" alt="Save">
+                <img src="image2/Share.png" alt="Share">
+                <img src="image2/Comment.png" alt="Comment">
+            </div>
+            <!-- Comments section -->
+            <div class="comments">
+                <div class="comment">
+                    <div class="username">User456</div>
+                    <div class="comment-text">Great post!</div>
+                    <div class="comment-actions">
+                        <img src="like-icon.png" alt="Like">
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="username">User789</div>
+                    <div class="comment-text">I agree!</div>
+                    <div class="comment-actions">
+                        <img src="like-icon.png" alt="Like">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Filter posts by subject
+        document.getElementById('subjectFilter').addEventListener('change', function() {
+            var subject = this.value;
+            var posts = document.querySelectorAll('.post');
+            posts.forEach(function(post) {
+                var postSubject = post.querySelector('.subject').textContent.toLowerCase().split(':')[1].trim();
+                if (subject === '' || postSubject === subject) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+
+        // Like a post
+        var likeButtons = document.querySelectorAll('.post-actions img[alt="Like"]');
+        likeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var likeCount = parseInt(this.dataset.likes) || 0;
+                likeCount++;
+                this.dataset.likes = likeCount;
+                alert('Liked! Likes: ' + likeCount);
+            });
+        });
+
+        // Save a post
+        var saveButtons = document.querySelectorAll('.post-actions img[alt="Save"]');
+        saveButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Post saved!');
+            });
+        });
+
+        // Share a post
+        var shareButtons = document.querySelectorAll('.post-actions img[alt="Share"]');
+        shareButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Post shared!');
+            });
+        });
+
+        // Comment on a post
+        var commentButtons = document.querySelectorAll('.post-actions img[alt="Comment"]');
+        commentButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                alert('Commenting feature coming soon!');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file here -->
+</head>
+<body>
+    <div class="search-bar">
+        <input type="text" placeholder="Search a subject">
+        <img src="search-icon.png" alt="Search icon">
+    </div>
+
+    <div class="timeline">
+        <!-- Posts will be dynamically added here -->
+        <div class="post">
+            <div class="post-header">
+                <span class="username">Username</span>
+                <span class="subject">Subject</span>
+            </div>
+            <div class="post-content">
+                <p class="caption">Post Caption</p>
+            </div>
+            <div class="post-footer">
+                <button class="like-button"><img src="like-icon.png" alt="Like"></button>
+                <span class="like-count">0</span>
+                <button class="save-button"><img src="save-icon.png" alt="Save"></button>
+                <button class="share-button"><img src="share-icon.png" alt="Share"></button>
+                <button class="comment-button"><img src="comment-icon.png" alt="Comment"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript code for fetching and displaying posts goes here
+        window.onload = function () {
+            fetchPosts();
+        };
+
+        function fetchPosts() {
+            // You would typically fetch posts from a server-side script or API
+            // For demonstration purposes, let's create dummy data
+            const dummyPosts = [
+                { username: "User1", caption: "Post 1 caption", subject: "Subject 1" },
+                { username: "User2", caption: "Post 2 caption", subject: "Subject 2" },
+                { username: "User3", caption: "Post 3 caption", subject: "Subject 1" },
+                // Add more dummy posts as needed
+            ];
+
+            // Loop through the dummy posts and create HTML for each post
+            dummyPosts.forEach(post => {
+                const postHTML = `
+                    <div class="post">
+                        <div class="post-header">
+                            <span class="username">${post.username}</span>
+                            <span class="subject">${post.subject}</span>
+                        </div>
+                        <div class="post-content">
+                            <p class="caption">${post.caption}</p>
+                        </div>
+                        <div class="post-footer">
+                            <button class="like-button"><img src="like-icon.png" alt="Like"></button>
+                            <span class="like-count">0</span>
+                            <button class="save-button"><img src="save-icon.png" alt="Save"></button>
+                            <button class="share-button"><img src="share-icon.png" alt="Share"></button>
+                            <button class="comment-button"><img src="comment-icon.png" alt="Comment"></button>
+                        </div>
+                    </div>
+                `;
+
+                // Append the post HTML to the timeline
+                document.querySelector(".timeline").innerHTML += postHTML;
+            });
+        }
+    </script>
+</body>
+</html>
+
+

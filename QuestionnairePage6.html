@@ -1,0 +1,111 @@
+﻿<!D<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Mental Health Questionnaire</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="image/EE2.png" alt="Logo" style="width:150px;height:150px;" />
+        <h1>EternalEase</h1>
+        <h2>Mental Health Questionnaire</h2>
+    </header>
+
+    <nav class="top-bar">
+        <a href="index.html">Home</a>
+        <!-- Add more links for top bar as needed, listed from right to left -->
+    </nav>
+
+    <form id="questionnaireForm">
+        <section>
+            <h2>Mini Questionnaire on Trauma- and Stressor-Related Disorders</h2>
+        </section>
+
+        <section>
+            <label><strong>1. Have you experienced or witnessed a traumatic event that continues to cause significant distress or intrusive memories?</strong></label>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a">A. No, I haven't experienced any traumatic events recently.</label>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b">B. Yes, I have experienced or witnessed a traumatic event, and it continues to affect me.</label>
+        </section>
+
+        <section>
+            <label><strong>2. How would you describe your reaction to stressors or reminders of the traumatic event?</strong></label>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a">A. Manage stressors relatively well without significant distress.</label>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b">B. Experience intense distress, anxiety, or avoidance when faced with reminders of the traumatic event.</label>
+        </section>
+
+        <section>
+            <label><strong>3. Do you find yourself easily startled, having difficulty concentrating, or struggling with sleep disturbances?</strong></label>
+            <input type="radio" id="q3a" name="q3" value="a">
+            <label for="q3a">A. No, these symptoms are not prominent.</label>
+            <input type="radio" id="q3b" name="q3" value="b">
+            <label for="q3b">B. Yes, I frequently experience heightened arousal, difficulty concentrating, or sleep disturbances.</label>
+        </section>
+
+        <section>
+            <label><strong>4. Have these experiences significantly affected your daily functioning, relationships, or overall well-being?</strong></label>
+            <input type="radio" id="q4a" name="q4" value="a">
+            <label for="q4a">A. No, my daily life and relationships are generally unaffected.</label>
+            <input type="radio" id="q4b" name="q4" value="b">
+            <label for="q4b">B. Yes, these experiences have had a significant impact on my daily functioning and relationships.</label>
+        </section>
+
+        <section>
+            <button type="button" onclick="calculateResults()">Submit</button>
+        </section>
+    </form>
+
+    <script>
+        function calculateResults() {
+            var aCount = 0;
+            var bCount = 0;
+
+            var answers = document.querySelectorAll('input[type="radio"]:checked');
+
+            answers.forEach(function (answer) {
+                if (answer.value === 'a') {
+                    aCount++;
+                } else if (answer.value === 'b') {
+                    bCount++;
+                }
+            });
+
+            var result = (bCount > aCount) ? 'Mostly B\'s: Your answers indicate potential signs of a Trauma- and Stressor-Related Disorder, and it\'s recommended to consult with a mental health professional for further evaluation.' :
+                'Mostly A\'s: Your responses suggest a lower likelihood of a Trauma- and Stressor-Related Disorder.';
+
+            var resultSection = document.createElement('section');
+            var resultHeading = document.createElement('h2');
+            var resultText = document.createElement('p');
+
+            resultHeading.textContent = 'Results:';
+            resultText.textContent = result;
+
+            resultSection.appendChild(resultHeading);
+            resultSection.appendChild(resultText);
+
+            var briefSummary = document.createElement('section');
+            briefSummary.innerHTML = '<h2>Brief Summary:</h2><p>If your responses lean towards mostly B\'s, it may suggest the presence of a Trauma- and Stressor-Related Disorder, such as Post-Traumatic Stress Disorder (PTSD). These disorders are characterized by exposure to a traumatic event and the development of symptoms such as intrusive memories, heightened arousal, and difficulties in emotional regulation. Seeking professional help, such as therapy or counseling, is crucial for a comprehensive assessment and the development of an appropriate treatment plan. Trauma- and Stressor-Related Disorders can significantly impact various aspects of life, and early intervention is essential for effective management and recovery.<strong>Remember, this questionnaire is not a diagnostic tool but serves as a starting point for understanding your mental health. If you have urgent concerns or are in crisis, please reach out to a mental health professional or a helpline in your area. Your well-being is important, and seeking support is a brave and positive step toward mental health.</strong> </p>';
+
+            document.body.appendChild(resultSection);
+            document.body.appendChild(briefSummary);
+
+            var nextButton = document.createElement('button');
+            nextButton.textContent = 'Exit the Questionnaire';
+            nextButton.onclick = function () {
+                window.location.href = 'index.html'; // Change the URL to your _________
+            };
+            document.body.appendChild(nextButton);
+
+            document.getElementById('questionnaireForm').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

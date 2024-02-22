@@ -1,0 +1,147 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav.top-bar {
+    background-color: lightgray;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+    nav.top-bar a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 16px;
+        display: inline-block;
+    }
+
+nav.top-bar b {
+    background-color: lightgray;
+    color: white;
+    margin-left: 160px;
+    padding: 10px;
+    text-align: center;
+}
+
+    nav.top-bar c {
+        text-decoration: none;
+        color: black;
+        padding: 10px 16px;
+        display: inline-block;
+    }
+
+nav.side-bar {
+    width: 160px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #777;
+    padding-top: 20px;
+}
+
+    nav.side-bar a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #666;
+    }
+
+header1 {
+    background-color: forestgreen;
+    color: white;
+    margin-left: 160px;
+    padding: 10px;
+    text-align: center;
+    display: inherit;
+}
+
+main {
+    margin-left: 160px;
+    padding: 10px;
+}
+
+section1 {
+    margin: 160px;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+h3 {
+    color: #333;
+}
+
+p1 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.emergency-info {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+    button:hover {
+        background-color: lightgrey;
+    }
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+ol {
+    margin-top: 10px;
+    margin-left: 20px;
+}

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Mental Health Questionnaire</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="image/EE2.png" alt="Logo" style="width:150px;height:150px;" />
+        <h1>EternalEase</h1>
+        <h2>Mental Health Questionnaire</h2>
+    </header>
+
+    <nav class="top-bar">
+        <a href="index.html">Home</a>
+        <!-- Add more links for top bar as needed, listed from right to left -->
+    </nav>
+
+    <form id="questionnaireForm">
+        <section>
+            <h2>Mini Questionnaire on Mood Disorders</h2>
+        </section>
+
+        <section>
+            <label><strong>1. Over the past few weeks, how would you describe your overall mood?</strong></label>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a">A. Generally stable and positive</label>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b">B. Fluctuating, with periods of sadness or irritability</label>
+        </section>
+
+        <section>
+            <label><strong>2. Have you noticed changes in your sleep patterns, such as difficulty falling asleep, staying asleep, or sleeping excessively?</strong></label>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a">A. No significant changes</label>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b">B. Yes, experiencing disturbances in sleep</label>
+        </section>
+
+        <section>
+            <label><strong>3. How is your energy level throughout the day?</strong></label>
+            <input type="radio" id="q3a" name="q3" value="a">
+            <label for="q3a">A. Generally consistent and adequate</label>
+            <input type="radio" id="q3b" name="q3" value="b">
+            <label for="q3b">B. Frequently feeling fatigued or lacking energy</label>
+        </section>
+
+        <section>
+            <label><strong>4. Do you find it difficult to concentrate or make decisions, and have you experienced a loss of interest or pleasure in activities you once enjoyed?</strong></label>
+            <input type="radio" id="q4a" name="q4" value="a">
+            <label for="q4a">A. No, my concentration and interest levels are normal.</label>
+            <input type="radio" id="q4b" name="q4" value="b">
+            <label for="q4b">B. Yes, struggling with concentration and experiencing a diminished interest in activities.</label>
+        </section>
+
+        <section>
+            <button type="button" onclick="calculateResults()">Submit</button>
+        </section>
+    </form>
+
+    <script>
+        function calculateResults() {
+            var aCount = 0;
+            var bCount = 0;
+
+            var answers = document.querySelectorAll('input[type="radio"]:checked');
+
+            answers.forEach(function (answer) {
+                if (answer.value === 'a') {
+                    aCount++;
+                } else if (answer.value === 'b') {
+                    bCount++;
+                }
+            });
+
+            var result = (bCount > aCount) ? 'Mostly B\'s: Your answers indicate potential signs of a Mood Disorder, and it\'s recommended to consult with a healthcare professional for further evaluation.' :
+                'Mostly A\'s: Your responses suggest a lower likelihood of a Mood Disorder.';
+
+            var resultSection = document.createElement('section');
+            var resultHeading = document.createElement('h2');
+            var resultText = document.createElement('p');
+
+            resultHeading.textContent = 'Results:';
+            resultText.textContent = result;
+
+            resultSection.appendChild(resultHeading);
+            resultSection.appendChild(resultText);
+
+            var briefSummary = document.createElement('section');
+            briefSummary.innerHTML = '<h2>Brief Summary:</h2><p>If your responses lean towards mostly B\'s, it may suggest the presence of a Mood Disorder, such as Major Depressive Disorder or bipolar disorder. Mood Disorders involve disturbances in a person\'s emotional state, leading to persistent feelings of sadness, irritability, or significant mood swings. Symptoms may also include changes in sleep patterns, energy levels, and the ability to concentrate. Seeking professional help, such as therapy or counseling, is crucial for a comprehensive assessment and the development of an appropriate treatment plan. Mood Disorders can significantly impact daily functioning, and early intervention is important for effective management and improvement of overall well-being. <strong>Remember, this questionnaire is not a diagnostic tool but serves as a starting point for understanding your mental health. If you have urgent concerns or are in crisis, please reach out to a mental health professional or a helpline in your area. Your well-being is important, and seeking support is a brave and positive step toward mental health.</strong>  </p>';
+
+            document.body.appendChild(resultSection);
+            document.body.appendChild(briefSummary);
+
+            var nextButton = document.createElement('button');
+            nextButton.textContent = 'Next Questionnaire';
+            nextButton.onclick = function () {
+                window.location.href = 'QuestionnairePage5.html'; // Change the URL to your _________
+            };
+            document.body.appendChild(nextButton);
+
+            document.getElementById('questionnaireForm').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
+
